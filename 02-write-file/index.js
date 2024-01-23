@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const writable = fs.createWriteStream(path.resolve(__dirname, './text.txt'));
+const filePath = path.resolve(__dirname, './text.txt');
 const { stdin, stdout } = process;
 
 function sayGoodbuy() {
@@ -26,6 +26,8 @@ stdin.on('data', (chunk) => {
     process.exit();
   } else {
     // write data to file
-    writable.write(chunk);
+    fs.appendFile(filePath, chunk, (err) => {
+      if (err) throw err;
+    });
   }
 });
