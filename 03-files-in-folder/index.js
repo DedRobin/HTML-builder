@@ -9,7 +9,8 @@ async function getFileInfo() {
     if (file.isFile()) {
       const [name, extension] = file.name.split('.');
       const stats = await fs.stat(path.resolve(folderPath, file.name));
-      console.log(`${name} - ${extension} - ${stats.size}kb`);
+      const size = stats.size / 1000;
+      console.log(`${name} - ${extension} - ${size}kb`);
     }
   });
 }
