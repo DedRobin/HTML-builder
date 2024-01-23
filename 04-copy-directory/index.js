@@ -2,9 +2,12 @@ const fs = require('fs/promises');
 const path = require('path');
 
 async function copyFiles() {
-  // Variables
+  // Paths
   const pathToFiles = path.resolve(__dirname, 'files');
   const pathToFilesCopy = path.resolve(__dirname, 'files-copy');
+
+  // Remove copy folder if it it exists
+  await fs.rm(pathToFilesCopy, { recursive: true, force: true });
 
   // Read files
   const files = await fs.readdir(pathToFiles);
