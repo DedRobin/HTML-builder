@@ -1,5 +1,5 @@
 const fs = require('node:fs/promises');
-const { createWriteStream, createReadStream } = require('fs');
+const { createWriteStream } = require('fs');
 const path = require('node:path');
 
 const DIST_PATH = path.resolve(__dirname, 'project-dist');
